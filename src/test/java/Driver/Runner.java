@@ -19,7 +19,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 plugin = {"com.cucumber.listener.ExtentCucumberFormatter:"},		
-features = {"/Users/sivasankaramalan/eclipse-workspace/ShivAutomation/Amazon_Test/src/test/resources/features/AmazonTestFeatureOne.feature"},
+features = {"/Users/sivasankaramalan/Desktop/Amazon_Test/src/test/resources/features/AmazonTestFeatureOne.feature"},
 //tags= {"~@Sanity","@Regression"},
 //tags= {"@Notes"},
 monochrome = true
@@ -36,7 +36,7 @@ public class Runner {
 
 	@AfterClass
 	public static void writeExtentReport() {
-		
+		 
 		Reporter.loadXMLConfig(new File(System.getProperty("user.dir") + "/target/extent-config.xml"));
 		Reporter.setSystemInfo("User Name", System.getProperty("user.name"));
 	    Reporter.setSystemInfo("Time Zone", System.getProperty("user.timezone"));

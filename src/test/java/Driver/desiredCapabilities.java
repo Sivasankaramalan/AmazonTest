@@ -31,11 +31,13 @@ public class desiredCapabilities {
 
 		if (prop.platformName.equalsIgnoreCase("Android")) {
 			
+			/**
+			 * For launching the test without Installing the App leave below two lines and (App) capability as Commented 
+			 */
 			
-			File app = new File(System.getProperty("user.dir") + "/src/main/java/Amazon_shopping.apk");
-//			final File appDir = new File("/Users/sivasankaramalan/Desktop/Healthify/");
-//    	    final File app = new File(appDir,"HealthifyMe-basic-release-4.apk");
-			
+//			System.out.println(System.getProperty("user.dir"));
+//			File app = new File(System.getProperty("user.dir") + "/App/Amazon_shopping.apk");
+
     		final DesiredCapabilities capabilities = new DesiredCapabilities();
     		
     		String ANDROID_DEVICE_SOCKET = "com.amazon.mShop.android.shopping" + "_devtools_remote";            
@@ -50,16 +52,16 @@ public class desiredCapabilities {
     		capabilities.setCapability("appActivity", "com.amazon.mShop.home.HomeActivity");
 
     		capabilities.setCapability("automationName", "uiautomator2");
-    		capabilities.setCapability("app", app.getAbsolutePath());
+//    		capabilities.setCapability("app", app.getAbsolutePath());
     		
     		capabilities.setCapability("instrumentApp", true);
-			capabilities.setCapability("fastReset", true);
+			capabilities.setCapability("noReset", false);
     		capabilities.setCapability("androidDeviceSocket", ANDROID_DEVICE_SOCKET);
     		
     		
     		driver =  new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     		
-    		wait = new WebDriverWait(driver, 20);
+    		wait = new WebDriverWait(driver, 30);
     		System.out.println("Initialize: "+driver);
     		
     		PageFactory.initElements(driver, Amazon_OR.class);

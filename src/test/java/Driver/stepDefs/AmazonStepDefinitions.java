@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -66,7 +67,6 @@ public class AmazonStepDefinitions extends desiredCapabilities{
 			System.out.println("Enter your Mobile Number to procced  Order");
 		}
 		catch(Exception E) {
-			wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.EnterShippingAddress));
 			System.out.println("Enter Address to procced your Order");
 
 		}
@@ -88,17 +88,28 @@ public class AmazonStepDefinitions extends desiredCapabilities{
 	public void login_to_amazon_app() throws InterruptedException {
 		
 		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.HelloSignIn));
+		
+		ScreenOrientation CurrentScreen = driver.getOrientation();
+		System.out.println("The Oreintation of Current Page is : "+ CurrentScreen );
+		
+		driver.rotate(ScreenOrientation.LANDSCAPE);
+		driver.rotate(ScreenOrientation.PORTRAIT);		
 		Amazon_OR.HelloSignIn.click();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		wait.until(ExpectedConditions.visibilityOf(Amazon_OR.MobileNumberOrEmail));
+		Amazon_OR.MobileNumberOrEmail.click();
+		Amazon_OR.MobileNumberOrEmail.clear();
 		Amazon_OR.MobileNumberOrEmail.sendKeys(data.email);
 		wait.until(ExpectedConditions.visibilityOf(Amazon_OR.Continue));
 		Amazon_OR.Continue.click();
-		Thread.sleep(2000);
-//		Amazon_OR.Password.click();
+		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.Password));
+		Amazon_OR.Password.click();
 		Amazon_OR.Password.sendKeys(data.password);
-		wait.until(ExpectedConditions.visibilityOf(Amazon_OR.Continue));
-		Amazon_OR.Continue.click();
+		wait.until(ExpectedConditions.visibilityOf(Amazon_OR.Login));
+		Amazon_OR.Login.click();
 		wait.until(ExpectedConditions.visibilityOf(Amazon_OR.AmazonLogo));
+		
+		
+
 	}
 	@And("^Validate text \"([^\"]*)\" is displayed$")
 	public void validate_text_displayed(String Text) {
@@ -123,9 +134,20 @@ public class AmazonStepDefinitions extends desiredCapabilities{
 		}
 		
 	}
+	@SuppressWarnings("static-access")
 	@And("^Verify the Suggestion on the Home Page$")
 	public void verify_the_suggestion_page() {
-		
+		CF.swipeHorizontal(driver);
+	}
+	@And("^Choose the current location$")
+	public void choose_the_current_location() {
+		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.AmazonLogo));
+		Amazon_OR.AmazonLogo.click();
+		Amazon_OR.Devliver.click();
+		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.useCurrentLocation));
+		Amazon_OR.useCurrentLocation.click();
+		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.AllowPermission));
+		Amazon_OR.AllowPermission.click();
 	}
 	
 	@And("^Search for the product \"([^\"]*)\"$")
@@ -140,7 +162,7 @@ public class AmazonStepDefinitions extends desiredCapabilities{
 
 			}
 			catch(Exception E) {
-				System.err.println("Searching for the First Time");
+				System.out.println("Searching for the First Time");
 
 			}
 			
@@ -173,14 +195,14 @@ public class AmazonStepDefinitions extends desiredCapabilities{
 			wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.AllowPermission));
 			Amazon_OR.AllowPermission.click();
 			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-			ProductName = Amazon_OR.Price.getText();
-			System.out.println("The Selected Product is :" + ProductName);
+			ProductName = Amazon_OR.ProdcutName.getText();
+			System.out.println("The Selected Product is : " + ProductName);
 			
 			Assert.assertTrue("The suggestions are not having expected Product", ProductName.contains("TV"));
 			}
 		catch(Exception E) {
 			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-			ProductName = Amazon_OR.Price.getText();
+			ProductName = Amazon_OR.ProdcutName.getText();
 			System.out.println("The Selected Product is :" + ProductName);
 			Assert.assertTrue("The suggestions are not having expected Product", ProductName.contains("TV"));
 		}
@@ -195,24 +217,27 @@ public class AmazonStepDefinitions extends desiredCapabilities{
 		
 
 	}
-	@And("^User Verify the details of the selected Product$")
+	@And("^User Verifies the details of the selected Product$")
 	public void user_verifies_the_details() throws MalformedURLException, InterruptedException {
 		
-		String ProductDetailsPage = Amazon_OR.Name.getText();
-		Assert.assertEquals(ProductDetailsPage, ProductName , "The Product is not matching with the Search");
+		String ProductDetailsPage = Amazon_OR.ProdcutName.getText();
+		Assert.assertEquals(ProductDetailsPage, ProductName);
 		System.out.println("The Name of the Choosen Prodcut is :"+ProductDetailsPage);
 		
 		String ProductPrice = Amazon_OR.Price.getText();
-		System.out.println("The Price of the Choosen Prodcut is :"+ProductPrice);
+		System.out.println("The Price of the Choosen Prodcut is: "+ProductPrice);
 		
-		String Description = Amazon_OR.FromTheManufacturer.getText();
+		CF.scrollToText("From the manufacturer", driver);
 		
-		CF.scrollToText(Description, driver);
+		Assert.assertTrue(Amazon_OR.FromTheManufacturer.isDisplayed());
 	}
 	@And("^User Add's the product to the Cart$")
-	public void user_adds_the_product_to_cart() {
+	public void user_adds_the_product_to_cart() throws MalformedURLException, InterruptedException {
 		
-//		CF.ScrollUp();
+		driver.navigate().back();
+		CF.scrollToText(data.Brand, driver);
+		Thread.sleep(2000);
+		CF.scrollToText("Add to Cart", driver);
 		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.AddToCart));
 		Amazon_OR.AddToCart.click();
 		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.CartMenu));
@@ -229,14 +254,10 @@ public class AmazonStepDefinitions extends desiredCapabilities{
 	public void verify_Cart() {
 		
 		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.SubTotal));
-		
-		String ProductCartPage = Amazon_OR.Name.getText();
-		Assert.assertEquals(ProductCartPage, ProductName , "The Product is not matching with the Search");
+		String ProductCartPage = Amazon_OR.ProdcutName.getText();
+		Assert.assertTrue(Amazon_OR.ProdcutName.isDisplayed());
+		Assert.assertTrue("The product is not present in the Cart", ProductCartPage.contains("TV"));
 	}
-
-	
-	
-	
 	
 	@Then("^User closes the app$")
 	public void user_closes_the_app() throws Throwable {

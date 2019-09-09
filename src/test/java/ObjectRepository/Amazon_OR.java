@@ -25,11 +25,21 @@ public class Amazon_OR extends desiredCapabilities{
 	@FindBy(xpath = "//android.widget.TextView[@text='Start shopping']")
 	public static WebElement startShopping;
 	
-	@FindBy(id = "ap_email_login")
+	@FindBy(xpath = "//*/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.app.Dialog/android.view.View[2]")
+	public static WebElement ClearButton;
+	
+	//android.widget.EditText[@index='1']
+	@FindBy(xpath = "//*/android.view.View[1]/android.view.View[2]/android.view.View[2]/android.view.View[2]/android.view.View/android.view.View/android.view.View[3]/android.widget.EditText")
 	public static WebElement MobileNumberOrEmail;
 	
-	@FindBy(id = "continue")
+	@FindBy(xpath = "//android.widget.Button[@text='Continue']")
 	public static WebElement Continue;
+	
+	@FindBy(xpath = "//android.widget.TextView[contains(@text,'Deliver')]")
+	public static WebElement Devliver;
+	
+	@FindBy(id = "com.amazon.mShop.android.shopping:id/loc_ux_update_current_pin_code")
+	public static WebElement useCurrentLocation;
 	
 	@FindBy(xpath = "//*[@text='Sign in for the best experience']")
 	public static WebElement SigninForBestExperience;
@@ -37,10 +47,10 @@ public class Amazon_OR extends desiredCapabilities{
 	@FindBy(id = "gw-sign-in-button")
 	public static WebElement SignIn;
 	
-	@FindBy(id = "ap_password")
+	@FindBy(xpath = "//*/android.view.View[1]/android.view.View[8]/android.view.View[2]/android.widget.EditText")
 	public static WebElement Password;
 	
-	@FindBy(id = "Login")
+	@FindBy(xpath = "//android.widget.Button[@text='Login']")
 	public static WebElement Login;
 	
 	@FindBy(id = "com.amazon.mShop.android.shopping:id/rs_search_src_text")
@@ -66,22 +76,22 @@ public class Amazon_OR extends desiredCapabilities{
 	@FindBy(id ="com.android.packageinstaller:id/permission_allow_button")
 	public static WebElement AllowPermission;
 	
-	@FindBy(id ="mobileapp_unifiedPrice_feature_div")
+	@FindBy(xpath ="//android.widget.EditText[contains(@text,'rupees')]")
 	public static WebElement Price;
 
 	@FindBy(xpath ="//android.widget.TextView[contains(@text,'65 Inches')]")
 	public static WebElement Inches;
 	
-	@FindBy(id ="bylineInfo")
+	@FindBy(xpath ="//android.view.View[contains(@text,'TV')]")
 	public static WebElement ProdcutName;
 	
-	@FindBy(id ="titleExpanderContent")
+	@FindBy(xpath ="//*/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[13]/android.view.View[2]/android.view.View[2]/android.view.View/android.view.View")
 	public static WebElement ProdcutDetails;
 	
 	@FindBy(xpath ="//android.view.View[@text='From the manufacturer']")
 	public static WebElement FromTheManufacturer;
 	
-	@FindBy(id ="add-to-cart-button")
+	@FindBy(xpath ="//android.widget.Button[@text='Add to Cart']")
 	public static WebElement AddToCart;
 	
 	@FindBy(id ="atc-success")
@@ -122,7 +132,6 @@ public class Amazon_OR extends desiredCapabilities{
 //	
 //	@FindBy(id ="in.amazon.mShop.android.shopping:id/iss_search_dropdown_item_text")
 //	public static WebElement SearchDropDown;
-	
 	
 	
 	
