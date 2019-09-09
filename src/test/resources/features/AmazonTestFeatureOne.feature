@@ -21,8 +21,8 @@ Feature: Validation of Amazon Mobile application for Adding Items in Cart
     And User Add's the product to the Cart
     Then User closes the app
 
-  #Scenario: Verify the Cart and Items in Cart
-    #And Navigate to the Cart menu
-    #And Verify the Product in Cart
-    #And User clicks on "Proceed to Buy" button
-    #Then User closes the app
+  Scenario: Verify the Cart and Items in Cart
+    And Navigate to the Cart menu
+    And Verify the Product in Cart
+    And User clicks on "Proceed to Buy" button
+    Then User closes the app

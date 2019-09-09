@@ -28,8 +28,7 @@ public class Amazon_OR extends desiredCapabilities{
 	@FindBy(xpath = "//*/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.app.Dialog/android.view.View[2]")
 	public static WebElement ClearButton;
 	
-	//android.widget.EditText[@index='1']
-	@FindBy(xpath = "//*/android.view.View[1]/android.view.View[2]/android.view.View[2]/android.view.View[2]/android.view.View/android.view.View/android.view.View[3]/android.widget.EditText")
+	@FindBy(xpath = "//android.widget.EditText[@index='1']")
 	public static WebElement MobileNumberOrEmail;
 	
 	@FindBy(xpath = "//android.widget.Button[@text='Continue']")

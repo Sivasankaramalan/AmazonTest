@@ -143,6 +143,7 @@ public class AmazonStepDefinitions extends desiredCapabilities{
 	public void choose_the_current_location() {
 		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.AmazonLogo));
 		Amazon_OR.AmazonLogo.click();
+		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.Devliver));
 		Amazon_OR.Devliver.click();
 		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.useCurrentLocation));
 		Amazon_OR.useCurrentLocation.click();
@@ -227,16 +228,13 @@ public class AmazonStepDefinitions extends desiredCapabilities{
 		String ProductPrice = Amazon_OR.Price.getText();
 		System.out.println("The Price of the Choosen Prodcut is: "+ProductPrice);
 		
-		CF.scrollToText("From the manufacturer", driver);
-		
-		Assert.assertTrue(Amazon_OR.FromTheManufacturer.isDisplayed());
+//		CF.scrollToText("From the manufacturer", driver);
+//		Assert.assertTrue(Amazon_OR.FromTheManufacturer.isDisplayed());
 	}
 	@And("^User Add's the product to the Cart$")
 	public void user_adds_the_product_to_cart() throws MalformedURLException, InterruptedException {
-		
-		driver.navigate().back();
-		CF.scrollToText(data.Brand, driver);
-		Thread.sleep(2000);
+		 
+		Thread.sleep(3000);
 		CF.scrollToText("Add to Cart", driver);
 		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.AddToCart));
 		Amazon_OR.AddToCart.click();

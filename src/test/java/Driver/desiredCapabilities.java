@@ -47,12 +47,11 @@ public class desiredCapabilities {
     		
     		capabilities.setCapability("deviceName", "OnePlus 5T");
     		capabilities.setCapability("udid", "bd121d35"); 
-    		
+//    		capabilities.setCapability("app", app.getAbsolutePath());
     		capabilities.setCapability("appPackage", "com.amazon.mShop.android.shopping");
     		capabilities.setCapability("appActivity", "com.amazon.mShop.home.HomeActivity");
 
     		capabilities.setCapability("automationName", "uiautomator2");
-//    		capabilities.setCapability("app", app.getAbsolutePath());
     		
     		capabilities.setCapability("instrumentApp", true);
 			capabilities.setCapability("noReset", false);
