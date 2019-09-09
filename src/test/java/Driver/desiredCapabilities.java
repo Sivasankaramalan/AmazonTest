@@ -45,8 +45,8 @@ public class desiredCapabilities {
     		capabilities.setCapability("platformName", "Android");
     		capabilities.setCapability("platformVersion", "9");
     		
-    		capabilities.setCapability("deviceName", "OnePlus 5T");
-    		capabilities.setCapability("udid", "bd121d35"); 
+    		capabilities.setCapability("deviceName", "10.207.203.1:5555");
+    		capabilities.setCapability("udid", "10.207.203.1:5555"); 
 //    		capabilities.setCapability("app", app.getAbsolutePath());
     		capabilities.setCapability("appPackage", "com.amazon.mShop.android.shopping");
     		capabilities.setCapability("appActivity", "com.amazon.mShop.home.HomeActivity");

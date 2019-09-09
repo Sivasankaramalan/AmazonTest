@@ -155,22 +155,21 @@ public class AmazonStepDefinitions extends desiredCapabilities{
 	public void search_for_product(String Product) {
 		if(Product.equals("65-inch TV")) {
 		
-			wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.HomeSearch));
-			Assert.assertTrue(Amazon_OR.HomeSearch.isDisplayed());
-			Amazon_OR.HomeSearch.click();
+		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.HomeSearch));
+		Assert.assertTrue(Amazon_OR.HomeSearch.isDisplayed());
+		Amazon_OR.HomeSearch.click();
 			try {
 				Amazon_OR.ClearSearch.click();
 
 			}
 			catch(Exception E) {
 				System.out.println("Searching for the First Time");
-
 			}
-			
-			Amazon_OR.HomeSearch.sendKeys(data.Product);
-			wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.SearchDropDown));
-			Amazon_OR.SearchDropDown.click();
-			wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.ResultsCount));
+	
+		Amazon_OR.HomeSearch.sendKeys(data.Product);
+		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.SearchDropDown));
+		Amazon_OR.SearchDropDown.click();
+		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.ResultsCount));
 		
 		}
 	}
@@ -233,8 +232,8 @@ public class AmazonStepDefinitions extends desiredCapabilities{
 	}
 	@And("^User Add's the product to the Cart$")
 	public void user_adds_the_product_to_cart() throws MalformedURLException, InterruptedException {
-		 
-		Thread.sleep(3000);
+		
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		CF.scrollToText("Add to Cart", driver);
 		wait.until(ExpectedConditions.elementToBeClickable(Amazon_OR.AddToCart));
 		Amazon_OR.AddToCart.click();
