@@ -19,7 +19,7 @@ public class BaseTest extends desiredCapabilities {
 @Before
 public void beforeHookfunction() throws MalformedURLException, InterruptedException{
         
-	Reporter.assignAuthor("Sivasankaramalan G");
+	Reporter.assignAuthor("Sivasankaramalan G ");
 
 	    SetDesiredCapabilities();
     }
@@ -36,20 +36,24 @@ public void beforeHookfunction() throws MalformedURLException, InterruptedExcept
 		if (scenario.isFailed()) {
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
 			try {
-				//This takes a screenshot from the driver at save it to the specified location
-				//File sourcePath = ((TakesScreenshot) testContext.getWebDriverManager().getDriver()).getScreenshotAs(OutputType.FILE);
+				/**
+				 *  This takes a screenshot from the driver at save it to the specified location
+				 *  Also make sure to create a folder 'screenshots' with in the cucumber-report folder
+				 */
 				
 				TakesScreenshot scrShot =((TakesScreenshot)driver);
-                 File sourcePath = scrShot.getScreenshotAs(OutputType.FILE);
+                File sourcePath = scrShot.getScreenshotAs(OutputType.FILE);
                  
-				//Building up the destination path for the screenshot to save
-				//Also make sure to create a folder 'screenshots' with in the cucumber-report folder
 				File destinationPath = new File(System.getProperty("user.dir") + "/target/cucumber-reports/screenshots/" + screenshotName + ".png");
 				
-				//Copy taken screenshot from source location to destination location
+				/**
+				 * Copy taken screenshot from source location to destination location
+				 */
 				Files.copy(sourcePath, destinationPath);   
 
-				//This attach the specified screenshot to the test
+				/**
+				 * This attach the specified screenshot to the test
+				 */
 				Reporter.addScreenCaptureFromPath(destinationPath.toString());
 			} catch (IOException e) {
 			} 

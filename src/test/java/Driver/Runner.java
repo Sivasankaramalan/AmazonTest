@@ -21,7 +21,7 @@ import cucumber.api.junit.Cucumber;
 plugin = {"com.cucumber.listener.ExtentCucumberFormatter:"},		
 features = {"/Users/sivasankaramalan/Desktop/Amazon_Test/src/test/resources/features/AmazonTestFeatureOne.feature"},
 //tags= {"~@Sanity","@Regression"},
-//tags= {"@Notes"},
+
 monochrome = true
  )
 public class Runner {

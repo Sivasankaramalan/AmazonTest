@@ -11,6 +11,7 @@ public class PropertyData {
 	public String Product = "65-inch TV";
 	public String price = null;
 	public String Brand ="Samsung";
+	public String tv = "TV";
 	
 
 }
