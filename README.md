@@ -3,11 +3,11 @@ Appium-cucumber-java-maven
 
 Appium-cucumber : Automation Testing Using Java
 
-Appium-cucumber is a behavior driven development (BDD) approach to write automation test script to test Web.
-It enables you to write and execute automated acceptance/unit tests.
-It is cross-platform, open source and free.
+Cucumber is a behavior driven development (BDD) approach to write automation test script to test Web and Mobile
+It enables you to write and execute automated acceptance/unit tests. It is cross-platform, open source and free.
 Automate your test cases with minimal coding.
-[More Details](http://seleniumcucumber.info/)
+
+[More Details](https://cucumber.io/docs)
 
 Documentation
 -------------
@@ -48,6 +48,7 @@ Framework Architecture
 		|	|_features
 		|	|	|_login.feature
 		|	|	|_signUp.feature
+		
 
 * **src/test/resources/features** - all the cucumber features files (files .feature ext) goes here.
 * **src/test/java/userStepDefinition** - you can define step defintion under this package for your feature steps.
@@ -55,6 +56,52 @@ Framework Architecture
 * **src/main/java/platformConfigs** - If you want to run your test on saucelab and browserstack platforms, you need to add its configuration such as username, access key here.
 * **src/main/java/browserConfig** - When you run your test on remote browser/platform you have to provide capabilities and platform information here.
 * **src/main/java/appUnderTest** - If you are testing mobile based application you can keep your app build here.
+
+What is Cucumber Feature File?
+-----------------------------
+
+	1. Feature File is an entry point to the Cucumber tests.
+	2. This is the file where you will describe your tests in Descriptive(Gherkin) language (like English).
+	3. It is an essential part of Cucumber, as it serves as an automation test script as well as the live document.
+	4. A single feature file can contain one or many scenarios
+	
+Keywords:
+--------
+
+	Feature: Defines what feature you will be testing in the tests below
+	Scenario: Defines the scenario that you will test
+	Given: Tells the pre-condition of the test
+	When:  Defines the condition of the test
+	And: Defines additional conditions of the test
+	Then: States the postcondition. You can say that it is an expected result of the test.
+	
+What is Step Definition File?
+---------------------------
+
+	A Step Definition is a java method in a class/file with an annotation(like: @Given, @When, @then, etc) attached to it, followed by the pattern(like: “^click on "([^"])"$”).
+	This pattern is used to link the Step Definition to all the matching (Gherkin)Steps => this code is what Cucumber would execute when it sees a Gherkin Step. Cucumber finds the Step Definition file with the help of Glue code in Cucumber Options.
+	
+Cucumber Runner Class:
+---------------------
+
+	This class will set up the interaction between the feature file and step definition file.
+	
+What is Cucumber Options?:
+-----------------------
+
+	In layman language @CucumberOptions are like property files or settings for your test. @CucumberOptions enables us to do all the things that we could have done if we have used the cucumber command line.
+	This is very helpful and of utmost importance, if we are using IDE such as eclipse only to execute our project.
+
+Parameterization:
+----------------
+
+	Parameterization in cucumber is basically done when you have the same scenario but few events are changing, to perform parameterization in cucumber, enter the keyword(event) in double-quotes.
+	
+Background:
+-----------
+
+	Background Keyword is written at the very starting of the feature file, Any statement or group of statements added to the background will execute before the execution of all the scenarios mentioned in that feature file.	
+
 
 Writing a test
 --------------
@@ -72,13 +119,9 @@ The predefined steps are located [here](doc/canned_steps.md)
 
 Running test
 --------------
+Execution Flow:
 
-Go to your project directory from terminal and hit following commands
-* `mvn test (defualt will run on local firefox browser)`
-* `mvn test "-Dbrowser=chrome" (to use any other browser)`
-* `mvn test -Dcucumber.options="classpath:features/my_first.feature"` to run specific feature.
-* `mvn test -Dcucumber.options="–-plugin html:target/result-html"` to generate a HTML report.
-* `mvn test -Dcucumber.options="–-plugin json:target/result-json"` to generate a JSON report.
+	*Runner class  >>  Feature file  >> Step Definition
 
 Running test On remote browser/platform
 ---------------------------------------
@@ -97,18 +140,10 @@ To run on browserstack create config file with name preceding with browserstack
 
 * `mvn test "-Dconfig=browserstack_mac_firefox"`
 
-Maven/Gradle Dependency
------------------------
+Reference
+----------
+Appium Desired Capabilities: https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/caps.md
 
-See https://jitpack.io/#selenium-cucumber/selenium-cucumber-java .
+https://cucumber.io/
 
-License
--------
-
-(The MIT License)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+http://www.tutorialspoint.com/cucumber/
