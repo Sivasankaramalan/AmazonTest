@@ -121,7 +121,9 @@ Running test
 --------------
 Execution Flow:
 
-	*Runner class  >>  Feature file  >> Step Definition
+	Runner class  >>  Feature file  >> Step Definition
+	
+	Run the Test from the Runner.class. (Run as 'JUnit'  or 'TestNG')
 
 Running test On remote browser/platform
 ---------------------------------------
