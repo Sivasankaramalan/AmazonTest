@@ -7,7 +7,7 @@ Cucumber is a behavior driven development (BDD) approach to write automation tes
 It enables you to write and execute automated acceptance/unit tests. It is cross-platform, open source and free.
 Automate your test cases with minimal coding.
 
-[More Details](https://cucumber.io/docs)
+[More Details](https://sivasankaramalan.bloggi.co/bdd-framework-for-mobile-applications-automation-with-appium)
 
 Documentation
 -------------
