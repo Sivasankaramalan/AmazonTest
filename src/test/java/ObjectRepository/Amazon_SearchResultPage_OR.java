@@ -11,7 +11,7 @@ public class Amazon_SearchResultPage_OR extends desiredCapabilities{
 	@FindBy(id = "com.amazon.mShop.android.shopping:id/rs_search_src_text")
 	public static WebElement HomeSearch;
 	
-	@FindBy(xpath ="//*/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.TextView")
+	@FindBy(id ="com.amazon.mShop.android.shopping:id/iss_search_dropdown_item_text")
 	public static WebElement SearchDropDown;
 	
 	@FindBy(xpath = "//android.widget.TextView[contains(@text,'Results')]")

@@ -42,9 +42,9 @@ public class CommonMethodsFunctions extends desiredCapabilities{
 		
 	    System.out.println("Call swipe left...");
 		Dimension size = driver.manage().window().getSize();
-	    int anchor = (int) (size.height * 15);
-	    int startPoint = (int) (size.width * 10);
-	    int endPoint = (int) (size.width * 50);
+	    int anchor = (int) (size.height * .15);
+	    int startPoint = (int) (size.width * .10);
+	    int endPoint = (int) (size.width * .50);
 	    
 	    System.out.println("Swipe: "+anchor+", "+startPoint+", "+endPoint+" and Size: "+size);
 	    new TouchAction(driver).press(PointOption.point(950, 700)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(100))).moveTo(PointOption.point(100, 700)).release().perform();

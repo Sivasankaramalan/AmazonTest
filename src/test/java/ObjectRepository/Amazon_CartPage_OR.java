@@ -7,7 +7,7 @@ import Driver.desiredCapabilities;
 
 public class Amazon_CartPage_OR extends desiredCapabilities{
 
-	@FindBy(id ="com.amazon.mShop.android.shopping:id/action_bar_cart_image")
+	@FindBy(id =  "com.amazon.mShop.android.shopping:id/action_bar_cart_image")
 	public static WebElement CartMenu;
 	
 	@FindBy(xpath ="//android.widget.Button[@text='Proceed to Buy']")
@@ -22,7 +22,7 @@ public class Amazon_CartPage_OR extends desiredCapabilities{
 	@FindBy(xpath ="//android.view.View[@text='Add a mobile phone number']")
 	public static WebElement AddMobileNumber;
 	
-	@FindBy(xpath ="//*/android.view.View[4]/android.view.View[2]/android.widget.EditText")
+	@FindBy(xpath ="//android.widget.EditText[@index='1']")
 	public static WebElement MobileNumberField;
 	
 	@FindBy(xpath ="//*[@text='Continue']")

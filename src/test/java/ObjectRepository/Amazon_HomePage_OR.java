@@ -20,7 +20,7 @@ public class Amazon_HomePage_OR extends desiredCapabilities{
 	@FindBy(xpath = "//android.widget.TextView[@text='Start shopping']")
 	public static WebElement startShopping;
 	
-	@FindBy(xpath = "//*/android.widget.RelativeLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[2]/android.app.Dialog/android.view.View[2]")
+	@FindBy(id = "com.amazon.mShop.android.shopping:id/rs_clear_text_button_accessibility")
 	public static WebElement ClearButton;
 	
 	@FindBy(xpath = "//android.widget.TextView[contains(@text,'Deliver')]")
@@ -32,20 +32,4 @@ public class Amazon_HomePage_OR extends desiredCapabilities{
 	@FindBy(xpath = "//*[@text='Sign in for the best experience']")
 	public static WebElement SigninForBestExperience;
 	
-	@FindBy(xpath = "//*/android.view.View[2]/android.view.View[3]/android.view.View[4]/android.view.View[6]/android.view.View")
-	public static WebElement MoreMenu;
-	
-	@FindBy(xpath = "//*/android.view.View[1]/android.view.View/android.view.View[7]/android.view.View")
-	public static WebElement ActionsBar;
-	
-	@FindBy(xpath = "//*/android.view.View[1]/android.view.View/android.view.View[8]/android.view.View")
-	public static WebElement PayBar;
-	
-	@FindBy(xpath = "//*/android.view.View[1]/android.view.View/android.view.View[9]/android.view.View")
-	public static WebElement HomeUtilsBar;
-	
-	//*/android.view.View[1]/android.view.View/android.view.View[10]/android.view.View
-	
-	@FindBy(xpath = "//*/android.view.View[1]/android.view.View/android.view.View[10]/android.view.View")
-	public static WebElement OffersBar;
 }

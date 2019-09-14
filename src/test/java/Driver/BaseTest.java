@@ -19,7 +19,7 @@ public class BaseTest extends desiredCapabilities {
 @Before
 public void beforeHookfunction() throws MalformedURLException, InterruptedException{
         
-	Reporter.assignAuthor("Sivasankaramalan G ");
+	Reporter.assignAuthor(" Sivasankaramalan Gunasekarasivam ");
 
 	    SetDesiredCapabilities();
     }
@@ -28,6 +28,7 @@ public void beforeHookfunction() throws MalformedURLException, InterruptedExcept
     public void afterHookfunction() {
         System.out.println("test completed");
         driver.quit();
+        stopAppiumServer();
 
     }
     
