@@ -65,7 +65,7 @@ public class desiredCapabilities {
 			 * Start the Appium Service with AppiumDriverLocalService
 			 * Check the method in details at the bottom of the Page
 			 */
-			startAppiumServer();
+//			startAppiumServer();
 			
 			final DesiredCapabilities capabilities = new DesiredCapabilities();
 			
@@ -95,10 +95,10 @@ public class desiredCapabilities {
     		capabilities.setCapability("androidDeviceSocket", ANDROID_DEVICE_SOCKET);
     		capabilities.setCapability("newCommandTimeout", 150);
     		
-    		// Starting the Appium Desktop on IP :127.0.0.1  and Port : 4723
-//    		driver =  new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+//    		 Starting the Appium Desktop on IP :127.0.0.1  and Port : 4723
+    		driver =  new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     		
-    		driver =  new AndroidDriver<MobileElement>(server.getUrl(), capabilities);
+//    		driver =  new AndroidDriver<MobileElement>(server.getUrl(), capabilities);
     		
     		wait = new WebDriverWait(driver, 30);
     		System.out.println("Initialize: "+driver);
